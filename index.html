@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome To My Home Page!</title>
+  <style>
+    body {
+      background-color: #000080;
+      background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      color: #ffff00;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 16px;
+    }
+
+    a { color: #00ffff; }
+    a:visited { color: #ff00ff; }
+    a:hover { color: #00ff00; }
+
+    .best-viewed {
+      background: repeating-linear-gradient(
+        0deg, #000080, #000080 2px, #0000aa 2px, #0000aa 4px
+      );
+      border: 2px solid #00ffff;
+      color: #c0c0c0;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      padding: 6px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff00ff;
+      text-shadow: 3px 3px #ff0000, -1px -1px #00ffff;
+      font-family: Impact, 'Comic Sans MS', cursive;
+      margin: 0.5rem 0;
+    }
+
+    .marquee-wrapper {
+      overflow: hidden;
+      border-top: 2px solid lime;
+      border-bottom: 2px solid lime;
+      padding: 4px 0;
+      margin: 10px 0;
+    }
+    .marquee-inner {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollLeft 12s linear infinite;
+      color: #00ff00;
+      font-size: 1.1rem;
+    }
+
+    @keyframes scrollLeft {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .blink { animation: blink 1s step-start infinite; }
+
+    .main-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+    }
+
+    .main-table td {
+      border: 2px solid #00ffff;
+      padding: 10px;
+      background: #000044;
+      vertical-align: top;
+      width: 33%;
+    }
+
+    .section-title {
+      color: #ff00ff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0 0 6px;
+    }
+
+    .photo-box {
+      background: #222;
+      border: 3px inset #c0c0c0;
+      padding: 8px;
+    }
+
+    .photo-box img {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #ff00ff;
+      display: block;
+      margin: 0 auto 8px;
+      object-fit: cover;
+    }
+
+    hr.fancy {
+      border: 0;
+      border-top: 4px double #ff00ff;
+      margin: 12px 0;
+    }
+
+    .message-box {
+      color: #ffffff;
+      font-size: 1rem;
+      background: #000044;
+      border: 1px solid #00ffff;
+      padding: 12px 20px;
+      display: inline-block;
+      max-width: 600px;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .badge {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      padding: 2px 8px;
+      border: 2px outset #ffffff;
+      height: 31px;
+      display: flex;
+      align-items: center;
+    }
+
+    .visitor-counter {
+      background: #000000;
+      border: 2px inset #c0c0c0;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      padding: 4px 12px;
+      display: inline-block;
+      letter-spacing: 4px;
+      margin: 8px 0;
+    }
+
+    .footer {
+      color: #c0c0c0;
+      font-size: 11px;
+      font-family: Arial, sans-serif;
+      margin-top: 12px;
+    }
+
+    .under-construction {
+      font-size: 2rem;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="best-viewed">
+    ★ BEST VIEWED IN INTERNET EXPLORER 4.0 AT 800×600 RESOLUTION ★
+  </div>
+
+  <div class="blink under-construction">🚧 UNDER CONSTRUCTION 🚧</div>
+
+  <h1>✦ Welcome To My Home Page! ✦</h1>
+
+  <div class="marquee-wrapper">
+    <span class="marquee-inner">
+      &nbsp;&nbsp;&nbsp;🌟 Thanks for visiting my page! Please sign my guestbook! You are visitor #000,142! 🌟&nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+
+  <table class="main-table">
+    <tr>
+      <td>
+        <p class="section-title">About Me 😊</p>
+        <p style="color: #ffffff; font-size: 0.9rem; margin: 0;">
+          Hi! I'm <strong style="color: #ffff00;">[YOUR NAME]</strong>. Welcome to my little corner of the World Wide Web!
+          I'm interested in [YOUR INTERESTS]. Feel free to look around!
+        </p>
+        <br>
+        <p style="font-size: 0.85rem; margin: 0;">
+          📍 Location: [YOUR CITY]<br>
+          ❤️ Likes: [THINGS YOU LIKE]
+        </p>
+      </td>
+
+      <td>
+        <div class="photo-box">
+          <!-- Replace 'your-photo.jpg' with your actual image filename -->
+          <img src="your-photo.jpg" alt="A photo of me">
+          <p style="color: #ffff00; font-size: 0.85rem; margin: 0;">[YOUR NAME]</p>
+        </div>
+      </td>
+
+      <td>
+        <p class="section-title">Links 🔗</p>
+        <p style="margin: 4px 0;"><a href="mailto:you@example.com">📧 Email Me</a></p>
+        <p style="margin: 4px 0;"><a href="#">📖 Sign My Guestbook</a></p>
+        <p style="margin: 4px 0;"><a href="#">👀 View Guestbook</a></p>
+        <p style="margin: 4px 0;"><a href="#">🏠 My Other Pages</a></p>
+        <p style="margin: 4px 0;"><a href="#">🌐 Cool Links</a></p>
+      </td>
+    </tr>
+  </table>
+
+  <hr class="fancy">
+
+  <div class="message-box">
+    <!-- Replace this with your actual one or two sentences -->
+    ✨ [YOUR MESSAGE OR TAGLINE GOES HERE] ✨
+    <br><br>
+    [A SECOND SENTENCE IF YOU WANT ONE]
+  </div>
+
+  <hr class="fancy">
+
+  <div>
+    <p style="color: #ff00ff; font-size: 1rem; margin-bottom: 4px;">Visitor Counter</p>
+    <div class="visitor-counter">000142</div>
+  </div>
+
+  <hr class="fancy">
+
+  <div class="badges">
+    <div class="badge" style="background: #c0c0c0; color: #000000;">Netscape Now!</div>
+    <div class="badge" style="background: #003399; color: #ffffff;">IE 4.0</div>
+    <div class="badge" style="background: #ff6600; color: #ffffff;">GeoCities</div>
+    <div class="badge" style="background: #000000; color: #ffffff;">No Frames!</div>
+    <div class="badge" style="background: #000080; color: #ffff00;">Web Ring Member</div>
+  </div>
+
+  <p class="footer">
+    © 1999 [YOUR NAME] • Last Updated: January 1, 1999<br>
+    Do not steal my HTML or images!!!<br>
+    This page has been visited <strong>142</strong> times since August 1997
+  </p>
+
+</body>
+</html>
