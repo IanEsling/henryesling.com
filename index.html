@@ -696,6 +696,20 @@
             font-size: 1rem;
         }
 
+        .form-message {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--color-white);
+        }
+
+        .form-message.success {
+            color: #86efac;
+        }
+
+        .form-message.error {
+            color: #fca5a5;
+        }
+
         /* =====================================================
            FOOTER
            ===================================================== */
@@ -1205,27 +1219,30 @@
                     </p>
                     
                     <!-- YOUR_EMAIL: Replace with your email address -->
-                    <a href="mailto:henry.esling@email.com" class="contact-item">
+                    <a href="mailto:enquiries@henryesling.com" class="contact-item">
                         <span class="contact-icon">✉</span>
-                        <span>henry.esling@email.com</span>
+                        <span>enquiries@henryesling.com</span>
                     </a>
                     
                     <!-- LINKEDIN_URL: Replace with your LinkedIn profile -->
-                    <a href="[linkedin.com](https://linkedin.com/in/your-profile)" target="_blank" class="contact-item">
+                    <a href="https://www.linkedin.com/in/henry-esling-139a4a2ba/" target="_blank" class="contact-item">
                         <span class="contact-icon">in</span>
-                        <span>linkedin.com/in/henryesling</span>
+                        <span>linkedin.com/Henry-Esling</span>
                     </a>
                     
                     <!-- Location - update as needed -->
                     <div class="contact-item">
                         <span class="contact-icon">📍</span>
-                        <span>London, United Kingdom</span>
+                        <span>Manchester, United Kingdom</span>
                     </div>
                 </div>
                 
                 <!-- Contact form -->
                 <div class="contact-form reveal">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formsubmit.co/enquiries@henryesling.com" method="POST">
+                        <input type="hidden" name="_subject" value="New contact form message from Henry Esling website">
+                        <input type="hidden" name="_captcha" value="false">
+
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required placeholder="John Smith">
@@ -1326,46 +1343,6 @@
         // Run on scroll and on initial load
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
-
-        // =====================================================
-        // CONTACT FORM HANDLER
-        // Basic form handling - customize for your needs
-        // =====================================================
-        const contactForm = document.getElementById('contactForm');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // For demonstration - shows an alert
-            // In production, you would send this to a server or email service
-            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon.`);
-            
-            // Reset the form
-            contactForm.reset();
-            
-            // =====================================================
-            // TO MAKE THE FORM ACTUALLY WORK:
-            // 
-            // Option 1: Use a service like Formspree ([formspree.io](https://formspree.io)
-            //   - Sign up and get your form endpoint
-            //   - Add action="[formspree.io](https://formspree.io/f/YOUR_ID)" to the form tag
-            //   - Remove this JavaScript handler
-            //
-            // Option 2: Use EmailJS ([emailjs.com](https://emailjs.com)
-            //   - Include their SDK
-            //   - Configure your email template
-            //   - Send using their API in this handler
-            //
-            // Option 3: Connect to your own backend server
-            // =====================================================
-        });
 
         // =====================================================
         // SMOOTH SCROLL OFFSET
