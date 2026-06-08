@@ -1,251 +1,1394 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome To My Home Page!</title>
-  <style>
-    body {
-      background-color: #000080;
-      background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
-      color: #ffff00;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 16px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Esling | Sports Media & Communications</title>
+    
+    <!-- 
+    =====================================================
+    HENRY ESLING - PORTFOLIO WEBSITE
+    =====================================================
+    
+    HOW TO CUSTOMIZE THIS WEBSITE:
+    
+    1. PROFILE PHOTO: Search for "PROFILE_PHOTO" and replace the placeholder URL
+    2. PROJECT IMAGES: Search for "PROJECT_IMAGE" and replace placeholder URLs
+    3. PDF LINKS: Search for "PDF_LINK" and replace with your actual PDF URLs
+    4. CV DOWNLOAD: Search for "CV_DOWNLOAD" and replace with your CV PDF URL
+    5. LINKEDIN: Search for "LINKEDIN_URL" and replace with your LinkedIn profile
+    6. EMAIL: Search for "YOUR_EMAIL" and replace with your email address
+    7. TEXT CONTENT: Update any text within the HTML sections as needed
+    
+    =====================================================
+    -->
+    
+    <style>
+        /* =====================================================
+           CSS VARIABLES - Change colors here if needed
+           ===================================================== */
+        :root {
+            --color-black: #0a0a0a;
+            --color-charcoal: #1a1a1a;
+            --color-charcoal-light: #2a2a2a;
+            --color-blue-accent: #3b82f6;
+            --color-blue-hover: #60a5fa;
+            --color-blue-subtle: rgba(59, 130, 246, 0.1);
+            --color-white: #ffffff;
+            --color-gray-light: #e5e5e5;
+            --color-gray: #a0a0a0;
+            --color-gray-dark: #404040;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --transition-speed: 0.3s;
+        }
 
-    a { color: #00ffff; }
-    a:visited { color: #ff00ff; }
-    a:hover { color: #00ff00; }
+        /* =====================================================
+           RESET & BASE STYLES
+           ===================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .best-viewed {
-      background: repeating-linear-gradient(
-        0deg, #000080, #000080 2px, #0000aa 2px, #0000aa 4px
-      );
-      border: 2px solid #00ffff;
-      color: #c0c0c0;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      padding: 6px;
-      margin-bottom: 12px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    h1 {
-      font-size: 3rem;
-      color: #ff00ff;
-      text-shadow: 3px 3px #ff0000, -1px -1px #00ffff;
-      font-family: Impact, 'Comic Sans MS', cursive;
-      margin: 0.5rem 0;
-    }
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            line-height: 1.6;
+        }
 
-    .marquee-wrapper {
-      overflow: hidden;
-      border-top: 2px solid lime;
-      border-bottom: 2px solid lime;
-      padding: 4px 0;
-      margin: 10px 0;
-    }
-    .marquee-inner {
-      display: inline-block;
-      white-space: nowrap;
-      animation: scrollLeft 12s linear infinite;
-      color: #00ff00;
-      font-size: 1.1rem;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    @keyframes scrollLeft {
-      0%   { transform: translateX(100vw); }
-      100% { transform: translateX(-100%); }
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
+        /* =====================================================
+           NAVIGATION BAR - Sticky header
+           ===================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all var(--transition-speed);
+        }
 
-    .blink { animation: blink 1s step-start infinite; }
+        .navbar.scrolled {
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
 
-    .main-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .main-table td {
-      border: 2px solid #00ffff;
-      padding: 10px;
-      background: #000044;
-      vertical-align: top;
-      width: 33%;
-    }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+        }
 
-    .section-title {
-      color: #ff00ff;
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin: 0 0 6px;
-    }
+        .nav-logo span {
+            color: var(--color-blue-accent);
+        }
 
-    .photo-box {
-      background: #222;
-      border: 3px inset #c0c0c0;
-      padding: 8px;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-    .photo-box img {
-      width: auto;
-      height: auto;
-      border: 2px solid #ff00ff;
-      display: block;
-      margin: 0 auto 8px;
-      object-fit: cover;
-    }
+        .nav-links a {
+            color: var(--color-gray);
+            font-weight: 500;
+            transition: color var(--transition-speed);
+            position: relative;
+        }
 
-    hr.fancy {
-      border: 0;
-      border-top: 4px double #ff00ff;
-      margin: 12px 0;
-    }
+        .nav-links a:hover {
+            color: var(--color-white);
+        }
 
-    .message-box {
-      color: #ffffff;
-      font-size: 1rem;
-      background: #000044;
-      border: 1px solid #00ffff;
-      padding: 12px 20px;
-      display: inline-block;
-      max-width: 600px;
-    }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-blue-accent);
+            transition: width var(--transition-speed);
+        }
 
-    .badges {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 12px 0;
-    }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    .badge {
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      padding: 2px 8px;
-      border: 2px outset #ffffff;
-      height: 31px;
-      display: flex;
-      align-items: center;
-    }
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
 
-    .visitor-counter {
-      background: #000000;
-      border: 2px inset #c0c0c0;
-      color: #00ff00;
-      font-family: 'Courier New', monospace;
-      font-size: 1.2rem;
-      padding: 4px 12px;
-      display: inline-block;
-      letter-spacing: 4px;
-      margin: 8px 0;
-    }
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-white);
+            transition: all var(--transition-speed);
+        }
 
-    .footer {
-      color: #c0c0c0;
-      font-size: 11px;
-      font-family: Arial, sans-serif;
-      margin-top: 12px;
-    }
+        /* =====================================================
+           HERO SECTION
+           ===================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--color-black) 0%, var(--color-charcoal) 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .under-construction {
-      font-size: 5rem;
-      margin: 8px 0;
-    }
-  </style>
+        /* Subtle background animation */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, var(--color-blue-subtle) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, var(--color-blue-subtle) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 span {
+            color: var(--color-blue-accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-gray);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--color-gray-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =====================================================
+           BUTTONS - Reusable button styles
+           ===================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--color-blue-accent);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-gray-dark);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-blue-accent);
+            color: var(--color-blue-accent);
+            transform: translateY(-2px);
+        }
+
+        /* =====================================================
+           SECTION STYLES - Common section styling
+           ===================================================== */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-dark {
+            background-color: var(--color-black);
+        }
+
+        .section-light {
+            background-color: var(--color-charcoal);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-blue-accent);
+        }
+
+        .section-subtitle {
+            color: var(--color-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* =====================================================
+           ABOUT SECTION
+           ===================================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Decorative element behind image */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--color-blue-accent);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-blue-accent);
+        }
+
+        .about-content p {
+            color: var(--color-gray-light);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-gray-light);
+        }
+
+        .highlight-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--color-blue-subtle);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-blue-accent);
+            font-size: 0.875rem;
+        }
+
+        /* =====================================================
+           PORTFOLIO SECTION
+           ===================================================== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--color-charcoal-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all var(--transition-speed);
+            border: 1px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-blue-accent);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform var(--transition-speed);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-image-wrapper {
+            overflow: hidden;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* =====================================================
+           EXPERIENCE SECTION - Timeline layout
+           ===================================================== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-blue-accent), var(--color-charcoal-light));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        /* Timeline dot */
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background-color: var(--color-blue-accent);
+            border-radius: 50%;
+            border: 3px solid var(--color-black);
+        }
+
+        .timeline-content {
+            background-color: var(--color-charcoal-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all var(--transition-speed);
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--color-blue-subtle);
+            color: var(--color-blue-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--color-blue-accent);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-description {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+        }
+
+        /* =====================================================
+           SKILLS SECTION
+           ===================================================== */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background-color: var(--color-charcoal-light);
+            border: 1px solid var(--color-gray-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+            cursor: default;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--color-blue-subtle);
+            border-color: var(--color-blue-accent);
+            color: var(--color-blue-accent);
+            transform: translateY(-5px);
+        }
+
+        /* =====================================================
+           CV SECTION
+           ===================================================== */
+        .cv-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-charcoal-light) 100%);
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .cv-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cv-section p {
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cv-btn {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* =====================================================
+           CONTACT SECTION
+           ===================================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-gray-light);
+            transition: color var(--transition-speed);
+        }
+
+        .contact-item:hover {
+            color: var(--color-blue-accent);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-charcoal-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all var(--transition-speed);
+        }
+
+        .contact-item:hover .contact-icon {
+            background-color: var(--color-blue-accent);
+            color: var(--color-white);
+        }
+
+        .contact-form {
+            background-color: var(--color-charcoal-light);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-gray-light);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--color-charcoal);
+            border: 1px solid var(--color-gray-dark);
+            border-radius: 8px;
+            color: var(--color-white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color var(--transition-speed);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-blue-accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        .footer {
+            background-color: var(--color-charcoal);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--color-gray-dark);
+        }
+
+        .footer p {
+            color: var(--color-gray);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--color-gray);
+            transition: color var(--transition-speed);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-blue-accent);
+        }
+
+        /* =====================================================
+           ANIMATIONS - Scroll reveal effect
+           ===================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =====================================================
+           RESPONSIVE DESIGN - Mobile styles
+           ===================================================== */
+        @media (max-width: 968px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--color-charcoal);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right var(--transition-speed);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 6px;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .timeline-item {
+                padding-left: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="best-viewed">
-    ★ BEST VIEWED IN INTERNET EXPLORER 4.0 AT 800×600 RESOLUTION ★
-  </div>
-
-  <div class="blink under-construction">🚧 UNDER CONSTRUCTION 🚧</div>
-
-  <h1>✦ Welcome To My Home Page! ✦</h1>
-
-  <div class="marquee-wrapper">
-    <span class="marquee-inner">
-      &nbsp;&nbsp;&nbsp;🌟 Thanks for visiting my page! Please sign my guestbook! You are visitor #000,142! 🌟&nbsp;&nbsp;&nbsp;
-    </span>
-  </div>
-
-  <table class="main-table">
-    <tr>
-      <td>
-        <p class="section-title">About Me <img src="smiley.gif" alt="A photo of me"></p>
-        <span style="color: #ffffff; font-size: 1.5rem; margin: 0;">
-          Hi! I'm <strong style="color: #ffff00;">HENRY ESLING!</strong>. I'm a Marketing Genius and a Friend To The Stars!1!.
-          Welcome to my little corner of the <strong style="color: #ffff00;">big World Wide We</strong>b!
-           Feel f<br>ree to look around!
-        </p>
-        <br>
-        <p style="font-size: 0.85rem; margin: 0;">
-          <img src="footballfast.gif" alt="A photo of me">
-        </p>
-      </td>
-
-      <td>
-        <div class="photo-box">
-          <!-- Replace 'your-photo.jpg' with your actual image filename -->
-          <img src="hen1.jpeg" alt="A photo of me">
+    <!-- =====================================================
+         NAVIGATION BAR
+         ===================================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- LOGO: Change text here if needed -->
+            <a href="#hero" class="nav-logo">H<span>E</span></a>
+            
+            <!-- Navigation links - update href to match section IDs -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile menu button -->
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-      </td>
+    </nav>
 
-      <td>
-        <p class="section-title">Links 🔗</p>
-        <img src="email.gif" alt="A photo of me">
-        <p style="margin: 4px 0;"><a href="mailto:BigHen@henryesling.com">📧 Email Me</a></p>
-        <p style="margin: 4px 0;"><a href="#">📖 Sign My Guestbook</a></p>
-        <p style="margin: 4px 0;"><a href="#">👀 View Guestbook</a></p>
-        <p style="margin: 4px 0;"><a href="#">🏠 My Other Pages</a></p>
-        <p style="margin: 4px 0;"><a href="#">🌐 Cool Links</a></p>
-        <img src="footballslow.gif" alt="A photo of me">
-        <img src="utd.gif" alt="A photo of me">
-      </td>
-    </tr>
-  </table>
+    <!-- =====================================================
+         HERO SECTION
+         Update the text content below as needed
+         ===================================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <!-- Main name - update "Henry" and "Esling" as needed -->
+            <h1>Henry <span>Esling</span></h1>
+            
+            <!-- Subtitle - your degree/title -->
+            <p class="hero-subtitle">Sports Media & Communications Graduate</p>
+            
+            <!-- Introduction paragraph - customize this text -->
+            <p class="hero-intro">
+                Passionate about blending creativity with strategy to create compelling digital content 
+                and marketing campaigns. Eager to bring fresh perspectives to sports marketing, 
+                brand communications, and content creation roles.
+            </p>
+            
+            <!-- Hero buttons -->
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                
+                <!-- CV_DOWNLOAD: Replace "#" with your actual CV PDF link -->
+                <a href="#" class="btn btn-secondary" target="_blank">Download CV</a>
+                
+                <!-- LINKEDIN_URL: Replace with your LinkedIn profile URL -->
+                <a href="[linkedin.com](https://linkedin.com/in/your-profile)" class="btn btn-secondary" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
 
-  <hr class="fancy">
+    <!-- =====================================================
+         ABOUT SECTION
+         ===================================================== -->
+    <section class="section section-dark" id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know who I am and what drives my passion</p>
+            </div>
+            
+            <div class="about-grid">
+                <!-- PROFILE_PHOTO: Replace the src URL with your actual photo -->
+                <div class="about-image reveal">
+                    <img src="[images.unsplash.com](https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face)" 
+                         alt="Henry Esling - Profile Photo">
+                </div>
+                
+                <div class="about-content reveal">
+                    <!-- About section heading -->
+                    <h3>Driven by Creativity & Sport</h3>
+                    
+                    <!-- About paragraphs - customize these -->
+                    <p>
+                        I'm a recent Sports Media & Communications graduate with a genuine passion for 
+                        the intersection of sport, digital marketing, and storytelling. Throughout my 
+                        studies, I've developed a strong foundation in creating engaging content that 
+                        resonates with audiences across multiple platforms.
+                    </p>
+                    <p>
+                        My experience spans social media management, content creation, and brand 
+                        communications, with a particular focus on the sports industry. I thrive in 
+                        fast-paced environments where creativity meets strategy, and I'm excited to 
+                        bring my fresh perspective and digital-native skills to a forward-thinking team.
+                    </p>
+                    
+                    <!-- Highlight items - key attributes -->
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Creative Content Development</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Digital Marketing Strategy</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Sports Industry Knowledge</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Strong Communication Skills</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="message-box">
-    <div class="photo-box">
-      <!-- Replace 'your-photo.jpg' with your actual image filename -->
-      <img src="hen2.jpeg" alt="Friend to the stars!">
-    </div>
-    [COMEBACKSOONFORMORECOOLSTUFFHERE]
-    <img src="cr7.gif" alt="A photo of me">
-    <img src="boxing.gif" alt="A photo of me">
-  </div>
+    <!-- =====================================================
+         PORTFOLIO SECTION
+         Add your projects here - each project-card is one project
+         ===================================================== -->
+    <section class="section section-light" id="portfolio">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Portfolio</h2>
+                <p class="section-subtitle">Selected projects showcasing my work in marketing and content creation</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                
+                <!-- PROJECT 1 -->
+                <div class="project-card reveal">
+                    <div class="project-image-wrapper">
+                        <!-- PROJECT_IMAGE_1: Replace with your project image -->
+                        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400&h=300&fit=crop)" 
+                             alt="Social Media Campaign" 
+                             class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <!-- Project title -->
+                        <h3 class="project-title">Social Media Campaign</h3>
+                        <!-- Project description -->
+                        <p class="project-description">
+                            Developed and executed a comprehensive social media strategy for a local 
+                            sports club, increasing engagement by 150% over three months.
+                        </p>
+                        <!-- PDF_LINK_1: Replace "#" with your PDF URL -->
+                        <a href="#" class="btn btn-primary project-btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 2 -->
+                <div class="project-card reveal">
+                    <div class="project-image-wrapper">
+                        <!-- PROJECT_IMAGE_2: Replace with your project image -->
+                        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop)" 
+                             alt="Brand Identity Project" 
+                             class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Brand Identity Project</h3>
+                        <p class="project-description">
+                            Created visual branding and communication guidelines for a university 
+                            athletics department, including logo concepts and social templates.
+                        </p>
+                        <!-- PDF_LINK_2: Replace "#" with your PDF URL -->
+                        <a href="#" class="btn btn-primary project-btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 3 -->
+                <div class="project-card reveal">
+                    <div class="project-image-wrapper">
+                        <!-- PROJECT_IMAGE_3: Replace with your project image -->
+                        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop)" 
+                             alt="Content Marketing Strategy" 
+                             class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Content Marketing Strategy</h3>
+                        <p class="project-description">
+                            Researched and proposed a content marketing plan for a fitness brand, 
+                            including audience analysis, content pillars, and distribution channels.
+                        </p>
+                        <!-- PDF_LINK_3: Replace "#" with your PDF URL -->
+                        <a href="#" class="btn btn-primary project-btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- PROJECT 4 -->
+                <div class="project-card reveal">
+                    <div class="project-image-wrapper">
+                        <!-- PROJECT_IMAGE_4: Replace with your project image -->
+                        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&h=300&fit=crop)" 
+                             alt="Video Production" 
+                             class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Video Production</h3>
+                        <p class="project-description">
+                            Produced promotional video content for sports events, handling scripting, 
+                            filming, and editing using Adobe Premiere Pro.
+                        </p>
+                        <!-- PDF_LINK_4: Replace "#" with your PDF URL -->
+                        <a href="#" class="btn btn-primary project-btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
-  <hr class="fancy">
+    <!-- =====================================================
+         EXPERIENCE SECTION
+         Update with your actual work experience
+         ===================================================== -->
+    <section class="section section-dark" id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My professional journey and relevant roles</p>
+            </div>
+            
+            <div class="timeline">
+                
+                <!-- EXPERIENCE ITEM 1 - Most recent first -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Date range -->
+                        <span class="timeline-date">Jun 2025 - Aug 2025</span>
+                        <!-- Job title -->
+                        <h3 class="timeline-title">Marketing Intern</h3>
+                        <!-- Company name -->
+                        <p class="timeline-company">Sports Media Agency</p>
+                        <!-- Job description -->
+                        <p class="timeline-description">
+                            Supported the digital marketing team in creating social media content, 
+                            analyzing campaign performance, and developing client presentations. 
+                            Gained hands-on experience with content management systems and analytics tools.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- EXPERIENCE ITEM 2 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Sep 2024 - May 2025</span>
+                        <h3 class="timeline-title">Social Media Coordinator</h3>
+                        <p class="timeline-company">University Sports Union</p>
+                        <p class="timeline-description">
+                            Managed social media accounts for multiple university sports teams. 
+                            Created engaging content, covered live events, and grew combined 
+                            following by 40% through strategic content planning.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- EXPERIENCE ITEM 3 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jun 2024 - Aug 2024</span>
+                        <h3 class="timeline-title">Content Creator (Freelance)</h3>
+                        <p class="timeline-company">Local Sports Clubs</p>
+                        <p class="timeline-description">
+                            Created promotional graphics, match-day content, and player spotlights 
+                            for local football and rugby clubs. Developed brand-consistent visual 
+                            templates using Canva and Adobe Creative Suite.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- EXPERIENCE ITEM 4 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 - 2025</span>
+                        <h3 class="timeline-title">BA Sports Media & Communications</h3>
+                        <p class="timeline-company">University Name</p>
+                        <p class="timeline-description">
+                            Graduated with Honours. Relevant modules included Digital Marketing, 
+                            Sports Journalism, Brand Management, and Media Production. 
+                            Dissertation focused on social media strategies in professional sports.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
-  <div>
-    <p style="color: #ff00ff; font-size: 1rem; margin-bottom: 4px;">Visitor Counter</p>
-    <div class="visitor-counter">000142</div>
-  </div>
+    <!-- =====================================================
+         SKILLS SECTION
+         ===================================================== -->
+    <section class="section section-light" id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Skills</h2>
+                <p class="section-subtitle">Tools and competencies I bring to the table</p>
+            </div>
+            
+            <!-- Skill badges - add or remove as needed -->
+            <div class="skills-grid reveal">
+                <span class="skill-badge">Content Creation</span>
+                <span class="skill-badge">Social Media Marketing</span>
+                <span class="skill-badge">Digital Marketing</span>
+                <span class="skill-badge">Sports Marketing</span>
+                <span class="skill-badge">Canva</span>
+                <span class="skill-badge">Adobe Creative Suite</span>
+                <span class="skill-badge">Communications</span>
+                <span class="skill-badge">Microsoft Office</span>
+                <span class="skill-badge">Video Editing</span>
+                <span class="skill-badge">Copywriting</span>
+                <span class="skill-badge">Analytics</span>
+                <span class="skill-badge">Brand Strategy</span>
+            </div>
+        </div>
+    </section>
 
-  <hr class="fancy">
+    <!-- =====================================================
+         CV DOWNLOAD SECTION
+         ===================================================== -->
+    <section class="section section-dark" id="cv">
+        <div class="container">
+            <div class="cv-section reveal">
+                <h3>Download My CV</h3>
+                <p>Get a comprehensive overview of my education, experience, and skills</p>
+                
+                <!-- CV_DOWNLOAD: Replace "#" with your actual CV PDF link -->
+                <a href="#" class="btn btn-primary cv-btn" target="_blank">
+                    📄 Download CV (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <div class="badges">
-    <div class="badge" style="background: #c0c0c0; color: #000000;">Netscape Now!</div>
-    <div class="badge" style="background: #003399; color: #ffffff;">IE 4.0</div>
-    <div class="badge" style="background: #ff6600; color: #ffffff;">GeoCities</div>
-    <div class="badge" style="background: #000000; color: #ffffff;">No Frames!</div>
-    <div class="badge" style="background: #000080; color: #ffff00;">Web Ring Member</div>
-  </div>
+    <!-- =====================================================
+         CONTACT SECTION
+         ===================================================== -->
+    <section class="section section-light" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">I'd love to hear about opportunities in marketing and sports media</p>
+            </div>
+            
+            <div class="contact-grid">
+                
+                <!-- Contact information -->
+                <div class="contact-info reveal">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        Whether you have an opportunity, a question, or just want to say hello, 
+                        feel free to reach out. I'm always open to discussing new projects and possibilities.
+                    </p>
+                    
+                    <!-- YOUR_EMAIL: Replace with your email address -->
+                    <a href="mailto:henry.esling@email.com" class="contact-item">
+                        <span class="contact-icon">✉</span>
+                        <span>henry.esling@email.com</span>
+                    </a>
+                    
+                    <!-- LINKEDIN_URL: Replace with your LinkedIn profile -->
+                    <a href="[linkedin.com](https://linkedin.com/in/your-profile)" target="_blank" class="contact-item">
+                        <span class="contact-icon">in</span>
+                        <span>linkedin.com/in/henryesling</span>
+                    </a>
+                    
+                    <!-- Location - update as needed -->
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>London, United Kingdom</span>
+                    </div>
+                </div>
+                
+                <!-- Contact form -->
+                <div class="contact-form reveal">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Smith">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Job Opportunity">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
-  <p class="footer">
-    © 1999 [YOUR NAME] • Last Updated: January 1, 1999<br>
-    Do not steal my HTML or images!!!<br>
-    This page has been visited <strong>142</strong> times since August 1997
-  </p>
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>© 2026 Henry Esling. All rights reserved.</p>
+    </footer>
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+    <script>
+        // =====================================================
+        // MOBILE MENU TOGGLE
+        // Opens and closes the mobile navigation menu
+        // =====================================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // =====================================================
+        // NAVBAR SCROLL EFFECT
+        // Adds a shadow and reduces padding when scrolling
+        // =====================================================
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // =====================================================
+        // SCROLL REVEAL ANIMATION
+        // Animates elements as they come into view
+        // =====================================================
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                // Trigger animation when element is 85% visible
+                if (elementTop < windowHeight * 0.85) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        // Run on scroll and on initial load
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // =====================================================
+        // CONTACT FORM HANDLER
+        // Basic form handling - customize for your needs
+        // =====================================================
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // For demonstration - shows an alert
+            // In production, you would send this to a server or email service
+            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon.`);
+            
+            // Reset the form
+            contactForm.reset();
+            
+            // =====================================================
+            // TO MAKE THE FORM ACTUALLY WORK:
+            // 
+            // Option 1: Use a service like Formspree ([formspree.io](https://formspree.io)
+            //   - Sign up and get your form endpoint
+            //   - Add action="[formspree.io](https://formspree.io/f/YOUR_ID)" to the form tag
+            //   - Remove this JavaScript handler
+            //
+            // Option 2: Use EmailJS ([emailjs.com](https://emailjs.com)
+            //   - Include their SDK
+            //   - Configure your email template
+            //   - Send using their API in this handler
+            //
+            // Option 3: Connect to your own backend server
+            // =====================================================
+        });
+
+        // =====================================================
+        // SMOOTH SCROLL OFFSET
+        // Adjusts scroll position to account for fixed navbar
+        // =====================================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
