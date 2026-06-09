@@ -711,6 +711,47 @@
         }
 
         /* =====================================================
+           COLLAPSIBLE TEXT - Read more/less functionality
+           ===================================================== */
+        .collapsible-text {
+            position: relative;
+            transition: max-height var(--transition-speed) ease-out;
+        }
+
+        .collapsible-text.collapsed {
+            max-height: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .collapsible-text.collapsed::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2rem;
+            background: linear-gradient(to bottom, transparent, var(--color-charcoal));
+            pointer-events: none;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background: none;
+            border: none;
+            color: var(--color-blue-accent);
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            transition: color var(--transition-speed);
+        }
+
+        .read-more-btn:hover {
+            color: var(--color-blue-hover);
+        }
+
+        /* =====================================================
            FOOTER
            ===================================================== */
         .footer {
@@ -994,20 +1035,22 @@
                 <div class="project-card reveal">
                     <div class="project-image-wrapper">
                         <!-- PROJECT_IMAGE_1: Replace with your project image -->
-                        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400&h=300&fit=crop)" 
+                        <img src="Assets/PPPadel.pdf.png" 
                              alt="Social Media Campaign" 
                              class="project-image">
                     </div>
                     <div class="project-content">
                         <!-- Project title -->
-                        <h3 class="project-title">Social Media Campaign</h3>
+                        <h3 class="project-title">Jubel Padel tour campaign</h3>
                         <!-- Project description -->
-                        <p class="project-description">
-                            Developed and executed a comprehensive social media strategy for a local 
-                            sports club, increasing engagement by 150% over three months.
-                        </p>
+                        <div class="collapsible-text collapsed" data-collapsible>
+                            <p class="project-description">
+                                For my final University project, I created a high-level marketing campaign for Jubel. I created a campaign that endorsed the brand through the popular sport of padel. The campaign includes thorough research, strategy, budget and timescales and media outputs. The campaign is designed to increase brand awareness and drive sales for Jubel, while also engaging with the growing padel community in the UK.
+                            </p>
+                        </div>
+                        <button class="read-more-btn" data-toggle-btn>Read More</button>
                         <!-- PDF_LINK_1: Replace "#" with your PDF URL -->
-                        <a href="#" class="btn btn-primary project-btn" target="_blank">View Project</a>
+                        <a href="Assets/Padel tour.pdf" class="btn btn-primary project-btn" target="_blank">View Project</a>
                     </div>
                 </div>
                 
@@ -1015,18 +1058,20 @@
                 <div class="project-card reveal">
                     <div class="project-image-wrapper">
                         <!-- PROJECT_IMAGE_2: Replace with your project image -->
-                        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop)" 
-                             alt="Brand Identity Project" 
+                        <img src="Assets/red bull image.pdf" 
+                             alt="RedBull X Skittles Campaign" 
                              class="project-image">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Brand Identity Project</h3>
-                        <p class="project-description">
-                            Created visual branding and communication guidelines for a university 
-                            athletics department, including logo concepts and social templates.
-                        </p>
+                        <h3 class="project-title">RedBull X Skittles Campaign</h3>
+                        <div class="collapsible-text collapsed" data-collapsible>
+                            <p class="project-description">
+                                During my University studies I created a marketing campaign for RedBull. I created a campaign that saw RedBull collaborate with Skittles to create a limited edition product line. The campaign aimed to drive sales for RedBull and Skittles. The campaign included research for both RedBull and Skittles, Offline and online media outputs, a detailed strategy and budget and timescales. The campaign was designed to create buzz and excitement around the limited edition product, while also engaging with both RedBull and Skittles' target audiences.
+                            </p>
+                        </div>
+                        <button class="read-more-btn" data-toggle-btn>Read More</button>
                         <!-- PDF_LINK_2: Replace "#" with your PDF URL -->
-                        <a href="#" class="btn btn-primary project-btn" target="_blank">View Project</a>
+                        <a href="Assets/red bull.pdf" class="btn btn-primary project-btn" target="_blank">View Project</a>
                     </div>
                 </div>
                 
@@ -1343,6 +1388,22 @@
         // Run on scroll and on initial load
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+
+        // =====================================================
+        // COLLAPSIBLE TEXT FUNCTIONALITY
+        // Handles read more/less button clicks for text sections
+        // =====================================================
+        document.querySelectorAll('[data-toggle-btn]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const textSection = btn.previousElementSibling;
+                
+                if (textSection && textSection.hasAttribute('data-collapsible')) {
+                    textSection.classList.toggle('collapsed');
+                    btn.textContent = textSection.classList.contains('collapsed') ? 'Read More' : 'Read Less';
+                }
+            });
+        });
 
         // =====================================================
         // SMOOTH SCROLL OFFSET
