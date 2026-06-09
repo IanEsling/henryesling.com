@@ -899,7 +899,30 @@
         }
     </style>
 </head>
-<body>
+<!-- Paste just before your closing </body> tag -->
+
+<script>
+  (function () {
+    var track = document.createElement('div');
+    track.style.cssText = 'position:fixed;left:48px;top:0;width:2px;height:100vh;background:rgba(255,255,255,0.06);z-index:999999;pointer-events:none;';
+    document.body.appendChild(track);
+
+    var line = document.createElement('div');
+    line.style.cssText = 'position:fixed;left:48px;top:0;width:2px;height:0%;background:#3b82f6;z-index:1000000;pointer-events:none;transition:height 0.08s linear;border-radius:0 0 2px 2px;';
+    document.body.appendChild(line);
+
+    var dot = document.createElement('div');
+    dot.style.cssText = 'position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:#3b82f6;box-shadow:0 0 10px #3b82f6,0 0 20px rgba(59,130,246,0.4);';
+    line.appendChild(dot);
+
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY;
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = total > 0 ? (scrolled / total) * 100 : 0;
+      line.style.height = Math.min(pct, 100) + '%';
+    }, { passive: true });
+  })();
+</script><body>
 
     <!-- =====================================================
          NAVIGATION BAR
