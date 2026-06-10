@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short form video creation | Henry Esling</title>
+    <style>
+        :root {
+            --color-black: #000000;
+            --color-charcoal: #1a1a1a;
+            --color-charcoal-light: #1a1a1a1a;
+            --color-blue-accent: #3b82f6;
+            --color-blue-hover: #60a5fa;
+            --color-blue-subtle: rgba(59, 130, 246, 0.1);
+            --color-white: #ffffff;
+            --color-gray-light: #e5e5e5;
+            --color-gray: #a0a0a0;
+            --color-gray-dark: #404040;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background-color: var(--color-black); color: var(--color-white); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; }
+        .nav-logo span { color: var(--color-blue-accent); }
+        .nav-back {
+            color: var(--color-gray);
+            font-weight: 500;
+            transition: color var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-back:hover { color: var(--color-white); }
+
+        /* HERO */
+        .hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--color-black) 0%, var(--color-charcoal) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, var(--color-blue-subtle) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, var(--color-blue-subtle) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out; }
+        .hero h1 span { color: var(--color-blue-accent); }
+        .hero-subtitle { font-size: 1.1rem; color: var(--color-gray); animation: fadeInUp 0.8s ease-out 0.2s backwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* VIDEOS SECTION */
+        .section { padding: 5rem 2rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .video-block {
+            margin-bottom: 3rem;
+            background-color: var(--color-charcoal);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-gray-dark);
+            transition: border-color var(--transition-speed);
+        }
+        .video-block:hover { border-color: var(--color-blue-accent); }
+        .video-block video { width: 100%; display: block; }
+        .video-info { padding: 1.25rem 1.5rem; }
+        .video-title { font-size: 1.1rem; font-weight: 600; color: var(--color-white); }
+
+        /* BACK BUTTON */
+        .back-section { text-align: center; padding: 2rem; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border: none;
+        }
+        .btn-primary { background-color: var(--color-blue-accent); color: var(--color-white); }
+        .btn-primary:hover { background-color: var(--color-blue-hover); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); }
+
+        /* FOOTER */
+        .footer { background-color: var(--color-charcoal); padding: 2rem; text-align: center; border-top: 1px solid var(--color-gray-dark); }
+        .footer p { color: var(--color-gray); }
+
+        /* SCROLL REVEAL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">H<span>E</span></a>
+            <a href="index.html#portfolio" class="nav-back">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Short Form <span>Video</span> Creation</h1>
+            <p class="hero-subtitle">A collection of video projects created during my studies and freelance work.</p>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="section">
+        <div class="container">
+
+            <div class="video-block reveal">
+                <video controls>
+                    <source src="Assets/Billboard.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-info">
+                    <p class="video-title">Billboard</p>
+                </div>
+            </div>
+
+            <div class="video-block reveal">
+                <video controls>
+                    <source src="Assets/final edit.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-info">
+                    <p class="video-title">Final Edit</p>
+                </div>
+            </div>
+
+            <div class="video-block reveal">
+                <video controls>
+                    <source src="Assets/freelance video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-info">
+                    <p class="video-title">Freelance Video</p>
+                </div>
+            </div>
+
+            <div class="video-block reveal">
+                <video controls>
+                    <source src="Assets/Gymshark ad.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-info">
+                    <p class="video-title">Gymshark Ad</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BACK BUTTON -->
+    <div class="back-section">
+        <a href="index.html#portfolio" class="btn btn-primary">← Back to Portfolio</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2024 Henry Esling. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+
+        // Scroll progress bar
+        (function () {
+            var track = document.createElement('div');
+            track.style.cssText = 'position:fixed;left:48px;top:0;width:2px;height:100vh;background:rgba(255,255,255,0.06);z-index:999999;pointer-events:none;';
+            document.body.appendChild(track);
+            var line = document.createElement('div');
+            line.style.cssText = 'position:fixed;left:48px;top:0;width:2px;height:0%;background:#3b82f6;z-index:1000000;pointer-events:none;transition:height 0.08s linear;border-radius:0 0 2px 2px;';
+            document.body.appendChild(line);
+            var dot = document.createElement('div');
+            dot.style.cssText = 'position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:#3b82f6;box-shadow:0 0 10px #3b82f6,0 0 20px rgba(59,130,246,0.4);';
+            line.appendChild(dot);
+            window.addEventListener('scroll', function () {
+                var scrolled = window.scrollY;
+                var total = document.documentElement.scrollHeight - window.innerHeight;
+                var pct = total > 0 ? (scrolled / total) * 100 : 0;
+                line.style.height = Math.min(pct, 100) + '%';
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+</html>
