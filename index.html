@@ -418,6 +418,8 @@
             overflow: hidden;
             transition: all var(--transition-speed);
             border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -443,6 +445,9 @@
 
         .project-content {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .project-title {
@@ -461,6 +466,7 @@
         .project-btn {
             width: 100%;
             justify-content: center;
+            margin-top: auto;
         }
 
         /* =====================================================
@@ -915,6 +921,13 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2rem;
@@ -931,6 +944,15 @@
 
             .section {
                 padding: 3rem 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-image {
+                height: 150px;
             }
         }
     </style>
@@ -1085,14 +1107,14 @@
                 <p class="section-subtitle">Selected projects showcasing my work in marketing and content creation</p>
             </div>
             
-            <div class="portfolio-grid" style="display: flex; align-items: flex-start; gap: 20px;">
+            <div class="portfolio-grid">
                 
   <!-- PROJECT 1 -->
-  <div class="project-card reveal" style="display: flex; flex-direction: column; flex: 1;">
+  <div class="project-card reveal">
     <div class="project-image-wrapper">
       <img src="Assets/PPPadel.pdf.png" alt="Social Media Campaign" class="project-image">
     </div>
-    <div class="project-content" style="display: flex; flex-direction: column; flex: 1;">
+    <div class="project-content">
       <h3 class="project-title">Jubel Padel tour campaign</h3>
       <div class="collapsible-text collapsed" data-collapsible>
         <p class="project-description">
@@ -1100,16 +1122,16 @@
         </p>
       </div>
       <button class="read-more-btn" data-toggle-btn>Read More</button>
-      <a href="Assets/Padel tour.pdf" class="btn btn-primary project-btn" style="margin-top: auto;" target="_blank">View Project</a>
+      <a href="Assets/Padel tour.pdf" class="btn btn-primary project-btn" target="_blank">View Project</a>
     </div>
   </div>
 
   <!-- PROJECT 2 -->
-  <div class="project-card reveal" style="display: flex; flex-direction: column; flex: 1;">
+  <div class="project-card reveal">
     <div class="project-image-wrapper">
       <img src="Assets/red bull image.pdf" alt="RedBull X Skittles Campaign" class="project-image">
     </div>
-    <div class="project-content" style="display: flex; flex-direction: column; flex: 1;">
+    <div class="project-content">
       <h3 class="project-title">RedBull X Skittles Campaign</h3>
       <div class="collapsible-text collapsed" data-collapsible>
         <p class="project-description">
@@ -1117,16 +1139,16 @@
         </p>
       </div>
       <button class="read-more-btn" data-toggle-btn>Read More</button>
-      <a href="Assets/red bull.pdf" class="btn btn-primary project-btn" style="margin-top: auto;" target="_blank">View Project</a>
+      <a href="Assets/red bull.pdf" class="btn btn-primary project-btn" target="_blank">View Project</a>
     </div>
   </div>
 
   <!-- PROJECT 3 -->
-  <div class="project-card reveal" style="display: flex; flex-direction: column; flex: 1;">
+  <div class="project-card reveal">
     <div class="project-image-wrapper">
       <img src="Assets/video editing.jpeg" alt="Short form video creation" class="project-image">
     </div>
-    <div class="project-content" style="display: flex; flex-direction: column; flex: 1;">
+    <div class="project-content">
       <h3 class="project-title">Short form video creation</h3>
       <div class="collapsible-text collapsed" data-collapsible>
         <p class="project-description">
@@ -1134,16 +1156,16 @@
         </p>
       </div>
       <button class="read-more-btn" data-toggle-btn>Read More</button>
-      <a href="content-marketing.html" class="btn btn-primary project-btn" style="margin-top: auto;">View Project</a>
+      <a href="content-marketing.html" class="btn btn-primary project-btn">View Project</a>
     </div>
   </div>
 
   <!-- PROJECT 4 -->
-  <div class="project-card reveal" style="display: flex; flex-direction: column; flex: 1;">
+  <div class="project-card reveal">
     <div class="project-image-wrapper">
       <img src="Assets/Henry mufc.jpg" alt="Video Production" class="project-image">
     </div>
-    <div class="project-content" style="display: flex; flex-direction: column; flex: 1;">
+    <div class="project-content">
       <h3 class="project-title">My Professional Showreel</h3>
       <div class="collapsible-text collapsed" data-collapsible>
         <p class="project-description"> 
@@ -1152,7 +1174,7 @@
         </p>
       </div>
       <button class="read-more-btn" data-toggle-btn>Read More</button>
-      <a href="Assets/SHOWREEL-3.mp4" class="btn btn-primary project-btn" style="margin-top: auto;" target="_blank">View Project</a>
+      <a href="Assets/SHOWREEL-3.mp4" class="btn btn-primary project-btn" target="_blank">View Project</a>
     </div>
   </div>
 
