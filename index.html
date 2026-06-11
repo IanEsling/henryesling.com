@@ -700,13 +700,49 @@
             margin-top: 1rem;
             font-size: 0.95rem;
             color: var(--color-white);
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+            transform: translateY(8px);
+        }
+
+        .form-message.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-message::before {
+            content: '';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 700;
         }
 
         .form-message.success {
             color: #86efac;
         }
 
+        .form-message.success::before {
+            content: '✓';
+            background-color: rgba(134, 239, 172, 0.15);
+            color: #86efac;
+        }
+
         .form-message.error {
+            color: #fca5a5;
+        }
+
+        .form-message.error::before {
+            content: '✕';
+            background-color: rgba(252, 165, 165, 0.15);
             color: #fca5a5;
         }
 
@@ -1009,8 +1045,8 @@
                     </p>
                     <p>
                         My experience spans social media management, content creation, brand 
-                        communications and marketing, with a particular focus on the sports industry. I thrive in 
-                        fast-paced environments where creativity meets strategy, and I'm excited to 
+                        communications and marketing. I thrive in 
+                        fast-paced environments where creativity meets strategy, and I am excited to 
                         bring my fresh perspective and digital-native skills to a forward-thinking team.
                     </p>
                     
@@ -1142,16 +1178,14 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <!-- Date range -->
-                        <span class="timeline-date">Jun 2025 - Aug 2025</span>
+                        <span class="timeline-date">June 2025 - Present</span>
                         <!-- Job title -->
-                        <h3 class="timeline-title">Marketing Intern</h3>
+                        <h3 class="timeline-title">Social Media Manager</h3>
                         <!-- Company name -->
-                        <p class="timeline-company">Sports Media Agency</p>
+                        <p class="timeline-company">Freelance</p>
                         <!-- Job description -->
                         <p class="timeline-description">
-                            Supported the digital marketing team in creating social media content, 
-                            analyzing campaign performance, and developing client presentations. 
-                            Gained hands-on experience with content management systems and analytics tools.
+                            During my time at University I started working as a freelance social media manager and marketer for a variety of businesses. I created content, planned the posting scheduele and analysed the account each week to find areas to improve and boost the accounts outreach. This has taught me a lot about time management, communication and what it means to work as a professional in the media and marketing industry.
                         </p>
                     </div>
                 </div>
@@ -1160,13 +1194,19 @@
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Sep 2024 - May 2025</span>
-                        <h3 class="timeline-title">Social Media Coordinator</h3>
-                        <p class="timeline-company">University Sports Union</p>
+                        <span class="timeline-date">December 2025 - Present</span>
+                        <h3 class="timeline-title">Padel Club Operative</h3>
+                        <p class="timeline-company">Soul Padel Stockport</p>
                         <p class="timeline-description">
-                            Managed social media accounts for multiple university sports teams. 
-                            Created engaging content, covered live events, and grew combined 
-                            following by 40% through strategic content planning.
+                            I currently work as a padel club operative at Soul Padel Stockport where I work either
+morning or afternoon shifts and run the operation of the club alone. I am responsible for the
+customer’s experience, booking enquiries, Sales and promotion and social media
+management while on shift. I have helped the company achieve: 359,936 views, 29,452
+accounts reached (a 45.3% increase), a 10% increase in followers and 1972 account
+interactions since I started working at the company.
+I am currently taking on a 4-week project for Soul Padel where I am working with senior
+members of staff where we are re-branding and re-launching the Instagram account for the
+new club opening up in Scotlands
                         </p>
                     </div>
                 </div>
@@ -1302,6 +1342,7 @@
                         </div>
                         
                         <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+                        <div class="form-message" id="formMessage" aria-live="polite"></div>
                     </form>
                 </div>
                 
@@ -1397,6 +1438,57 @@
                 }
             });
         });
+
+        // =====================================================
+        // CONTACT FORM SUBMISSION
+        // Submit form via AJAX and show inline thank-you feedback
+        // =====================================================
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm && formMessage) {
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton ? submitButton.textContent : 'Send Message';
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Sending...';
+                }
+
+                formMessage.className = 'form-message';
+                formMessage.textContent = '';
+
+                try {
+                    const formData = new FormData(contactForm);
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Form submission failed.');
+                    }
+
+                    formMessage.textContent = 'Thank you — your message has been received.';
+                    formMessage.classList.add('visible', 'success');
+                    contactForm.reset();
+                } catch (error) {
+                    formMessage.textContent = 'Oops — something went wrong. Please try again or email enquiries@henryesling.com.';
+                    formMessage.classList.add('visible', 'error');
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalText;
+                    }
+                }
+            });
+        }
 
         // =====================================================
         // SMOOTH SCROLL OFFSET
